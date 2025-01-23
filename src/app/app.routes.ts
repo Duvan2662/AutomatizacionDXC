@@ -14,7 +14,7 @@ export const routes: Routes = [
       {
         path:'download',
         title: 'Download',
-        loadComponent:() => import('./pages/formulario/formulario.component').then(component=>component.FormularioComponent),
+        loadComponent:() => import('./pages/pantalla-final/pantalla-final.component').then(component=>component.PantallaFinalComponent),
       },
       {
         path:'',
