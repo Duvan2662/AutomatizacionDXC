@@ -34,6 +34,96 @@
                 </div>
             </div>
 
+            <!-- Fecha del caso de prueba -->
+             <div class="row mb-3">
+              <label class="col-sm-3 col-form-label">Fecha del caso de prueba</label>
+              <div class="col-sm-9">
+                <input type="date"
+                       class="form-control custom-datepicker"
+                       >
+                       <span class="form-text text-danger">
+                        Digite la fecha del caso de prueba
+                   </span>
+              </div>
+             </div>
+
+             <!-- Cedula  -->
+             <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">Cedula</label>
+              <div class="col-sm-9">
+                  <input type="number"
+                         class="form-control"
+                         formControlName = 'inStorage'
+                         placeholder="Ejm: 1001342626">
+
+                  <span class="form-text text-danger">
+                       Digite la cedula con la que hizo el caso de prueba
+                  </span>
+              </div>
+            </div>
+
+            <!-- Dispositivo -->
+             <div class="mb-3 row">
+              <label class="col-sm-3 col-form-label">Plataforma</label>
+              <div class="col-sm-9" >
+                <select class="form-select" aria-label="Default select example">
+                  <option selected>Seleccione una opcion</option>
+                  <option value="1">Davivienda.com</option>
+                  <option value="2">SuperApp-Android</option>
+                  <option value="3">SuperApp-IOS</option>
+                </select>
+              </div>
+             </div>
+
+             <!-- Agregar Favorito -->
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Agregar</label>
+      <div class="col-sm-9">
+
+          <div class="input-group">
+              <input class="form-control"
+                    [formControl] = "newFavorite"
+                     placeholder="Agregar favorito">
+                     >
+
+
+              <button (click)="onAddToFavorite()"
+                      class="btn btn-outline-primary"
+                      type="button">
+                  Agregar favorito
+              </button>
+          </div>
+      </div>
+  </div>
+
+
+  <!-- Lista de Juegos Favoritos -->
+  <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Favoritos</label>
+      <div class="col-sm-9"  formArrayName="favoriteGames">
+
+          <div class="mb-1" *ngFor="let item of favoriteGames.controls; let i = index">
+
+              <div class="input-group">
+                  <input
+                    [formControlName] = "i"
+                    class="form-control"
+                  >
+
+                  <button class="btn btn-outline-danger"
+                          type="button"
+                          (click)="onDeleteFavorite(i)">
+                    Eliminar
+                </button>
+              </div>
+              <span *ngIf="isValidFieldInArray(favoriteGames,i)" class="form-text text-danger">
+                este campo es requerido
+              </span>
+          </div>
+
+      </div>
+  </div>
+
 
             <div class="row">
                 <div class="col">
